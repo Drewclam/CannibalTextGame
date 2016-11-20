@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drew's Text Game.CSharp", "Drew's Text Game.CSharp.csproj", "{336680FF-2AA7-A5E6-2B2A-14B87D98CD8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{336680FF-2AA7-A5E6-2B2A-14B87D98CD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336680FF-2AA7-A5E6-2B2A-14B87D98CD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336680FF-2AA7-A5E6-2B2A-14B87D98CD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336680FF-2AA7-A5E6-2B2A-14B87D98CD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
