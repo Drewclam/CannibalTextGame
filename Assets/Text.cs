@@ -8,7 +8,7 @@ public class NewBehaviourScript : MonoBehaviour {
 
     private enum States
     {
-        introduction, table_0, table_1, table_2, esc_0, esc_1, esc_2, esc_3, rm_0, death_0 
+        introduction, table_0, table_1, table_2, esc_0, esc_1, esc_2, esc_3, rm_0, rm_1, rm_1_Bedroom, rm_1_Bedroom_Desk, death_0 
     };
 
     private States myState;
@@ -69,6 +69,21 @@ public class NewBehaviourScript : MonoBehaviour {
             rm_0();
         }
 
+        else if (myState == States.rm_1)
+        {
+            rm_1();
+        }
+
+        else if (myState == States.rm_1_Bedroom)
+        {
+            rm_1_Bedroom();
+        }
+
+        else if (myState == States.rm_1_Bedroom_Desk)
+        {
+            rm_1_Bedroom_Desk();
+        }
+
         else if(myState == States.death_0)
         {
             death_0();
@@ -88,7 +103,7 @@ public class NewBehaviourScript : MonoBehaviour {
     }
 
 
-
+    // Dining room table
     void table_0()
     {
         text.text = "You sit down at the table and look around the tastefully decorated room. At work, Charles kept his desk impeccably " +
@@ -250,8 +265,113 @@ public class NewBehaviourScript : MonoBehaviour {
         
     }
 
+    // Ground floor
     void rm_0()
     {
-        text.text = "You stand up";
+        text.text = "You stand up and look around the room. \n \"Feel free to look around!\" Charles says pulling out his phone. \"Dinner should be ready soon.\" \n" +
+                    "Press U to go upstairs \n\n" +
+                    "Press D to go downstairs \n\n" +
+                    "Press L to leave the house \n\n" +
+                    "Press S to sit back down";
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            myState = States.rm_1;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            myState = States.rm_2;
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            text.text = "You don't go out often. Probably better to spend the evening with friends. \n\n" +
+                        "Press ENTER";
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                myState = States.table_2;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            myState = States.table_2;
+        }
+    }
+
+    void rm_1()
+    {
+        text.text = "You head upstairs. You observe three doors in the dimly lit hallway. Hopefully they aren't locked. \n\n" +
+                    "Press B to go into Charles' bedroom \n\n" +
+                    "Press W to go into the washroom \n\n" +
+                    "Press C to open the hallway closet";
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            myState = States.rm_1_Bedroom;
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            myState = States.rmUp_1;
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            myState = States.rmUp_2;
+        }
+    }
+
+    // Upstairs 
+
+    void rm_1_Bedroom()
+    {
+        // ADD A BEDROOM KEY CONDITION
+        text.text = "You step into the bedroom. There's a desk with a chair and a neatly-made bed. \n\n " +
+                    "Press D to examine the desk \n\n" +
+                    "Press B to examine the bed \n\n" +
+                    "Press W to examine the window \n\n" +
+                    "Press E to exit to hallway";
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            myState = States.rm_1_Bedroom_Desk;
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            myState = States.rmUp_1;
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            myState = States.rmUp_2;
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            myState = States.rm_1;
+        }
+    }
+
+    void rm_1_Bedroom_Desk()
+    {
+        text.text = "The desk is absolutely spotless. No dust or lint on it's surface. Inside you find some photographs. \n\n" +
+                    "Press P to examine the photographs \n\n" +
+                    "Press R to return";
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            text.text = "There are photographs of many young women. They don't look professionally taken. There is also a picture " +
+                        "of Charles. He has a tattoo on his neck. \n\n" +
+                        "Press R to return";
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                myState = States.rm_1_Bedroom;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            myState = States.rm_1_Bedroom;
+        }
+    }
+
+    void rmUp_1()
+    {
+
+    }
+
+    void rmUp_2()
+    {
+
     }
 }
