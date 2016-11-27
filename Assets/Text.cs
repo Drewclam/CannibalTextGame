@@ -8,7 +8,8 @@ public class NewBehaviourScript : MonoBehaviour {
 
     private enum States
     {
-        introduction, table_0, table_1, table_2, esc_0, esc_1, esc_2, esc_3, rm_0, rm_1, rm_1_Bedroom, rm_1_Bedroom_Desk, death_0 
+        introduction, table_0, table_1, table_2, esc_0, esc_1, esc_2, esc_3, rm_0, rm_1, rm_1_Bedroom, rm_1_Bedroom_Desk, rm_1_Bedroom_Bed,
+        rm_1_Bedroom_Window, death_0 
     };
 
     private States myState;
@@ -82,6 +83,16 @@ public class NewBehaviourScript : MonoBehaviour {
         else if (myState == States.rm_1_Bedroom_Desk)
         {
             rm_1_Bedroom_Desk();
+        }
+
+        else if (myState == States.rm_1_Bedroom_Bed)
+        {
+            rm_1_Bedroom_Bed();
+        }
+
+        else if (myState == States.rm_1_Bedroom_Window)
+        {
+            rm_1_Bedroom_Window();
         }
 
         else if(myState == States.death_0)
@@ -308,11 +319,11 @@ public class NewBehaviourScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            myState = States.rmUp_1;
+            myState = States.rm_1_Washroom;
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            myState = States.rmUp_2;
+            myState = States.rm_1_Closet;
         }
     }
 
@@ -332,11 +343,11 @@ public class NewBehaviourScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            myState = States.rmUp_1;
+            myState = States.rm_1_Bedroom_Bed;
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            myState = States.rmUp_2;
+            myState = States.rm_1_Bedroom_Window;
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
@@ -365,13 +376,43 @@ public class NewBehaviourScript : MonoBehaviour {
         }
     }
 
-    void rmUp_1()
+    void rm_1_Bedroom_Bed()
     {
-
+        text.text = "The bed is impeccably made. Hard to believe Charles even sleeps here. \n\n" +
+                    "Press P to examine pillows \n\n" +
+                    "Press S to examine sheets \n\n" +
+                    "Press R to return";
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            text.text = "You rummage through the pillows on the bed. Nothing inside. \n\n" +
+                        "Press R to return";
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                myState = States.rm_1_Bedroom_Bed;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            text.text = "You pull back the sheets. It smells freshly laundered. \n\n" +
+                        "Press R to return";
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                myState = States.rm_1_Bedroom_Bed;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            myState = States.rm_1_Bedroom;
+        }
     }
 
-    void rmUp_2()
+    void rm_1_Bedroom_Window()
     {
-
+        text.text = "You look through the bedroom window. You can see your black Civic sitting in the driveway. \n\n" +
+                    "Press R to return";
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            myState = States.rm_1_Bedroom;
+        }
     }
 }
